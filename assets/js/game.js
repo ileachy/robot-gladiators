@@ -8,45 +8,55 @@ var playerAttack = 10;
 var enemyName = "Roborto";
 var enemyHealth = 50;
 var enemyAttack = 12;
+var promptFight = window.prompt(
+  "Would you light to FIGHT or SKIP this battle? Enter 'FIGHT' or  'SKIP' to choose."
+);
 
 var fight = function () {
   window.alert("Welcome to Robot Gladiators!");
+  window;
 };
 
 fight();
 
-enemyHealth = enemyHealth - playerAttack;
-console.log(
-  playerName +
-    " attacked " +
-    enemyName +
-    " . " +
-    enemyName +
-    " now has " +
-    enemyHealth +
-    " health remaining "
-);
-
-if (enemyHealth <= 0) {
-  window.alert(enemyName + " has died!");
-} else {
-  window.alert(enemyName + " still has " + enemyHealth + " health left.");
-}
-
-playerHealth = playerHealth - enemyAttack;
-console.log(
-  enemyName +
-    " attacked " +
+if (promptFight === "fight" || promptFight === "FIGHT") {
+  enemyHealth = enemyHealth - playerAttack;
+  console.log(
     playerName +
-    " . " +
-    playerName +
-    " now has " +
-    playerHealth +
-    " health remaining "
-);
+      " attacked " +
+      enemyName +
+      " . " +
+      enemyName +
+      " now has " +
+      enemyHealth +
+      " health remaining "
+  );
 
-if (playerHealth <= 0) {
-  window.alert(playerName + " has died!");
+  if (enemyHealth <= 0) {
+    window.alert(enemyName + " has died!");
+  } else {
+    window.alert(enemyName + " still has " + enemyHealth + " health left.");
+  }
+
+  playerHealth = playerHealth - enemyAttack;
+  console.log(
+    enemyName +
+      " attacked " +
+      playerName +
+      " . " +
+      playerName +
+      " now has " +
+      playerHealth +
+      " health remaining "
+  );
+
+  if (playerHealth <= 0) {
+    window.alert(playerName + " has died!");
+  } else {
+    window.alert(playerName + " still has " + playerHealth + " health left.");
+  }
+} else if (promptFight === "skip" || promptFight === "SKIP") {
+  window.alert(playerName + " has chosen to skip the fight!");
 } else {
-  window.alert(playerName + " still has " + playerHealth + " health left.");
+  window.alert("you need to choose a valid option. try again!");
 }

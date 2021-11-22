@@ -1,25 +1,30 @@
-// creates function named "fight"
+// Game States
+// "WIN" - Player robot has defated all enemy-robots
+//    *Fight all enemy-robots
+//    *Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+// playerVariables
 var playerName = window.prompt("what is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
-
-// you can also log values like console.log(playerName, playerAttack, playerHealth);
-
-var enemyName = "Roborto";
+// enemyVariables
+var enemyName = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 var promptFight = window.prompt(
   "Would you light to FIGHT or SKIP this battle? Enter 'FIGHT' or  'SKIP' to choose."
 );
-
+// creates function named "fight"
 var fight = function () {
   window.alert("Welcome to Robot Gladiators!");
   window;
 };
 
-fight();
+// fight();
 
+//fight prompt + enemy attack
 if (promptFight === "fight" || promptFight === "FIGHT") {
   enemyHealth = enemyHealth - playerAttack;
   console.log(
@@ -38,7 +43,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   } else {
     window.alert(enemyName + " still has " + enemyHealth + " health left.");
   }
-
+  // player attack
   playerHealth = playerHealth - enemyAttack;
   console.log(
     enemyName +

@@ -16,13 +16,12 @@ var enemyAttack = 12;
 var promptFight = window.prompt(
   "Would you light to FIGHT or SKIP this battle? Enter 'FIGHT' or  'SKIP' to choose."
 );
+
 // creates function named "fight"
-var fight = function () {
+var fight = function (enemyName) {
   window.alert("Welcome to Robot Gladiators!");
   window;
 };
-
-// fight();
 
 //fight prompt + enemy attack
 if (promptFight === "fight" || promptFight === "FIGHT") {
@@ -71,8 +70,12 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   }
   // if false loop to fight function
   else {
-    fight();
+    //fight();
   }
 } else {
   window.alert("you need to choose a valid option. try again!");
+}
+
+for (var i = 0; i < enemyName.length; i++) {
+  fight(enemyName[i]);
 }

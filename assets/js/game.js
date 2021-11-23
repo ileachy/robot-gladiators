@@ -1,9 +1,3 @@
-// Game States
-// "WIN" - Player robot has defated all enemy-robots
-//    *Fight all enemy-robots
-//    *Defeat each enemy-robot
-// "LOSE" - Player robot's health is zero or less
-
 // playerVariables
 var playerName = window.prompt("what is your robot's name?");
 var playerHealth = 100;
@@ -13,6 +7,13 @@ var playerMoney = 10;
 var enemyName = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
+
+// function to generate a random numeric value
+var randomNumber = function (min, max) {
+  var value = Math.floor(Math.random() * (min, max + 1) + min);
+
+  return value;
+};
 
 // creates function named "fight"
 var fight = function (enemyName) {
@@ -37,7 +38,8 @@ var fight = function (enemyName) {
     }
 
     // remove enemy's health by subtracting attk amount from enemyHealth
-    enemyHealth = enemyHealth - playerAttack;
+    var damage = randomNumber(playerAttack - 3, playerAttack);
+    enemyHealth = Math.max(0, enemyHealth - damage);
     console.log(
       playerName +
         " attacked " +
@@ -54,7 +56,7 @@ var fight = function (enemyName) {
       window.alert(enemyName + " has died!");
 
       // award player mpney for winning
-      playerMoney = playerMoney + 10;
+      playerMoney = Math.max(0, playerMoney - 10);
 
       // leave while() loop since enemy is dead
       break;
@@ -63,7 +65,9 @@ var fight = function (enemyName) {
     }
 
     // remove player's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    var damage = randomNumber(enemyAttack - 3, enemyAttack);
+
+    playerHealth = Math.max(0, playerHealth - damage);
     console.log(
       enemyName +
         " attacked " +
@@ -94,7 +98,7 @@ var startGame = function () {
       playerHealth = 100;
       playerAttack = 10;
       playerMoney = 10;
-      enemyHealth = 50;
+      enemyHealth = Math.floor(Math.random() * 21) + 40;
       fight(pickedEnemyName);
 
       // if we're not at the last enemy in the array
@@ -141,6 +145,7 @@ var shop = function () {
   );
   // use switch to carry out action
   switch (shopOptionPrompt) {
+    case "REFILL":
     case "refill":
       if (playerMoney >= 7) {
         window.alert("Reflling player's health by 20 for 7 points.");
@@ -153,6 +158,7 @@ var shop = function () {
       }
 
       break;
+    case "UPGRADE":
     case "upgrade":
       if (playerMoney >= 7) {
         window.alert("Upgrading player's attack by 6 for 7 points.");
@@ -164,6 +170,7 @@ var shop = function () {
         window.alert("you don't have enough money!");
       }
       break;
+    case "LEAVE":
     case "leave":
       window.alert("Leaving the store.");
 
